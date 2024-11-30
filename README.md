@@ -1,14 +1,10 @@
 # Twitter Hate Speech Detection
 
-## *Can Content Moderation Be Automated?*
-
-![banner](./visualizations/banner.png)
-
 ## Overview
 
 This project focuses on developing a **bi-directional LSTM model** for detecting hate speech in tweets. The dataset consists of labeled tweets, which are preprocessed by removing URLs, mentions, special characters, and expanding contractions. The data is then tokenized, padded, and balanced through downsampling to address class imbalance. The model architecture includes a bi-directional LSTM with dropout and batch normalization layers to improve generalization. WandB is used for tracking and visualizing training progress. The model is trained with early stopping to prevent overfitting. After training, the model is evaluated using accuracy and a confusion matrix. The model shows good performance, classifying tweets as either hate speech or not. The final model is saved and can be used for real-time prediction on new tweets.
 
-An **interactive version** of the final model is hosted on Huggingface. Check it out [here](https://huggingface.co/spaces/GokulRajaR/Hate_tweet_classificatio)!
+An **interactive version** of the final model is hosted on Huggingface. Check it out [here](https://huggingface.co/spaces/GokulRajaR/Hate_tweet_classification)!
 
 ## Business Problem
 The project faces several challenges in hate speech detection, including a highly imbalanced dataset, where non-hate speech vastly outnumbers hate speech examples. The test dataset is significantly smaller than the training data, limiting model evaluation. Additionally, the test data lacks labels, requiring predictions before performance can be assessed. These issues make it difficult to develop a reliable model that generalizes well across different types of content. Addressing these problems is crucial for building an effective hate speech detection system.
@@ -41,8 +37,7 @@ For monitoring the training process and managing resources effectively, I used W
 
 ## Final Model Performance
 The **F1 score**  was used as the primary evaluation metric for this model, while also considering Precision and Recall to provide a comprehensive assessment of its performance.
-
-![confusion](./images/confusion matrix.png)
+![img1](./images/confusion matrix.png)
 
 The final model achieves a True Negative Rate (TNR) of 86% and a True Positive Rate (TPR) of 29%. These values provide insight into the model's classification behavior:
 
@@ -62,5 +57,5 @@ The issue of class imbalance is manageable with preprocessing techniques and cla
 
 ## Final Model Deployment
 
-An **interactive version** of the final model is hosted on Huggingface. Check it out [here](https://huggingface.co/spaces/GokulRajaR/Hate_tweet_classificatio)!
+An **interactive version** of the final model is hosted on Huggingface. Check it out [here](https://huggingface.co/spaces/GokulRajaR/Hate_tweet_classification)!
 
