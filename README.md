@@ -17,7 +17,7 @@ The dataset exhibits a significant class imbalance, with non-hate speech tweets 
 ### 2. Missing Labels in test data
 The test dataset is essential for evaluating the model's performance, but it is provided without labels. To overcome this, I utilized a pre-trained model from **Hugging Face(citizenlab/twitter-xlm-roberta-base-sentiment-finetunned)** to label the test data before making predictions and assessing the model’s performance.
 
-## 3. Data Sourcing
+### 3. Data Sourcing
 The original dataset consists of a highly imbalanced distribution, with the following counts:
 -Train Data: 29,720 non-hate tweets (label 0), 2,242 hate tweets (label 1)
 -Test Data: 15,088 non-hate tweets (label 0), 2,109 hate tweets (label 1)
