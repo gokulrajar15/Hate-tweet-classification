@@ -2,13 +2,12 @@
 
 ## Overview
 
-This project focuses on developing a **bi-directional LSTM model** for detecting hate speech in tweets. The dataset consists of labeled tweets, which are preprocessed by removing URLs, mentions, special characters, and expanding contractions. The data is then tokenized, padded, and balanced through downsampling to address class imbalance. The model architecture includes a bi-directional LSTM with dropout and batch normalization layers to improve generalization. WandB is used for tracking and visualizing training progress. The model is trained with early stopping to prevent overfitting. After training, the model is evaluated using accuracy and a confusion matrix. The model shows good performance, classifying tweets as either hate speech or not. The final model is saved and can be used for real-time prediction on new tweets.
+This project focuses on developing a **bi-directional LSTM model** for detecting hate speech in tweets. The dataset consists of labeled tweets, which are preprocessed by removing URLs, mentions, special characters, and expanding contractions. The data is then tokenized, padded, and balanced through class weighting to address class imbalance. The model architecture includes a bi-directional LSTM with dropout and batch normalization layers to improve generalization. WandB is used for tracking and visualizing training progress. The model is trained with early stopping to prevent overfitting. After training, the model is evaluated using accuracy and a confusion matrix. The model shows good performance, classifying tweets as either hate speech or not. The final model is hosted and can be used for real-time prediction on new tweets.
 
 An **interactive version** of the final model is hosted on Huggingface. Check it out [here](https://huggingface.co/spaces/GokulRajaR/Hate_tweet_classification)!
 
 ## Business Problem
-The project faces several challenges in hate speech detection, including a highly imbalanced dataset, where non-hate speech vastly outnumbers hate speech examples. The test dataset is significantly smaller than the training data, limiting model evaluation. Additionally, the test data lacks labels, requiring predictions before performance can be assessed. These issues make it difficult to develop a reliable model that generalizes well across different types of content. Addressing these problems is crucial for building an effective hate speech detection system.
-
+The project faces several challenges in hate speech detection, including a highly imbalanced dataset, where non-hate speech vastly outnumbers hate speech examples. The test data lacks labels, requiring predictions before performance can be assessed. These issues make it difficult to develop a reliable model that generalizes well across different types of content. Addressing these problems is crucial for building an effective hate speech detection system.
 
 ## Data Understanding
 ### 1. Data imbalance
@@ -16,7 +15,7 @@ The project faces several challenges in hate speech detection, including a highl
 The dataset exhibits a significant class imbalance, with non-hate speech tweets vastly outnumbering hate speech tweets. This imbalance can cause the model to be biased toward the majority class ("No Hate"), leading to poor performance on the minority class ("Hate"). In Natural Language Processing (NLP) tasks, data augmentation is a common approach to address such imbalance. However, due to limited resources, I did not use augmentation techniques in this project. Instead, I implemented class weighting to mitigate the impact of this imbalance during model training.
 
 ### 2. Missing Labels in test data
-The test dataset is essential for evaluating the model's performance, but it is provided without labels. To overcome this, I utilized a pre-trained model from Hugging Face to label the test data before making predictions and assessing the model’s performance.
+The test dataset is essential for evaluating the model's performance, but it is provided without labels. To overcome this, I utilized a pre-trained model from **Hugging Face(citizenlab/twitter-xlm-roberta-base-sentiment-finetunned)** to label the test data before making predictions and assessing the model’s performance.
 
 ## 3. Data Sourcing
 The original dataset consists of a highly imbalanced distribution, with the following counts:
@@ -37,6 +36,7 @@ For monitoring the training process and managing resources effectively, I used W
 
 ## Final Model Performance
 The **F1 score**  was used as the primary evaluation metric for this model, while also considering Precision and Recall to provide a comprehensive assessment of its performance.
+
 ![img2](./images/confusion_matrix.png)
 
 The final model achieves a True Negative Rate (TNR) of 86% and a True Positive Rate (TPR) of 29%. These values provide insight into the model's classification behavior:
@@ -53,7 +53,7 @@ The True Positive Rate (29%) reflects the model's ability to identify hate speec
 2. The inavailability of labels in the test dataset.
 2. The model's inability to "understand" the nuances of hate speech.
 
-The issue of class imbalance is manageable with preprocessing techniques and class weinghting method. However, identifying hate speech and labeling the test data set is an overall problem.
+The issue of class imbalance is manageable with preprocessing techniques and class weighting method. However, identifying hate speech and labeling the test data set is an overall problem.
 
 ## Final Model Deployment
 
