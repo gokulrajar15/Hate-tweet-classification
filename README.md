@@ -37,7 +37,7 @@ For monitoring the training process and managing resources effectively, I used W
 
 ## Final Model Performance
 The **F1 score**  was used as the primary evaluation metric for this model, while also considering Precision and Recall to provide a comprehensive assessment of its performance.
-![img1](./images/confusion matrix.png)
+![img2](./images/confusion_matrix.png)
 
 The final model achieves a True Negative Rate (TNR) of 86% and a True Positive Rate (TPR) of 29%. These values provide insight into the model's classification behavior:
 
