@@ -55,6 +55,22 @@ The True Positive Rate (29%) reflects the model's ability to identify hate speec
 
 The issue of class imbalance is manageable with preprocessing techniques and class weighting method. However, identifying hate speech and labeling the test data set is an overall problem.
 
+Solution 2:
+
+After noticing that my initial model wasn't performing well, I discovered a major issue: many hate speech tweets in the training dataset were mislabeled as non-hate speech. This mislabeling confused the model during training, leading to poor results when I tested it on correctly labeled data.
+
+![img3](./images/misclassification.png)
+
+To solve this problem, I decided to ignore the original labels in the training data. Instead, I re-labeled all the training tweets using a pre-trained model from Hugging Face called citizenlab/twitter-xlm-roberta-base-sentiment-finetuned. This model is already good at identifying hate speech in tweets.
+
+By using these new, more accurate labels, I provided my model with better data to learn from. I then retrained my Bidirectional LSTM model using this re-labeled dataset.
+
+This change led to a significant improvement in my model's performance. The retrained model became much better at distinguishing between hate speech and non-hate speech tweets. You can see the improved results in the confusion matrix below.
+
+![img4](./images/confusion_matrix_2.png)
+
+In summary, by re-labeling the training data with a reliable pre-trained model and retraining my own model, I achieved better accuracy and reliability in detecting hate speech. The solution 2 focused on missclassification in the train dataset. this misclassification leads to poor performance in the evaluation with a proper classfied test dataset. most of the hate tweets are labeled as no hate.
+
 ## Final Model Deployment
 
 An **interactive version** of the final model is hosted on Huggingface. Check it out [here](https://huggingface.co/spaces/GokulRajaR/Hate_tweet_classification)!
