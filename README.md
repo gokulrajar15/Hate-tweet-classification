@@ -55,7 +55,7 @@ The True Positive Rate (29%) reflects the model's ability to identify hate speec
 
 The issue of class imbalance is manageable with preprocessing techniques and class weighting method. However, identifying hate speech and labeling the test data set is an overall problem.
 
-Solution 2:
+### Solution 2:
 
 After noticing that my initial model wasn't performing well, I discovered a major issue: many hate speech tweets in the training dataset were mislabeled as non-hate speech. This mislabeling confused the model during training, leading to poor results when I tested it on correctly labeled data.
 
